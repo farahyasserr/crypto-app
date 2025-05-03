@@ -1,4 +1,5 @@
 import { CoinDetailsScreen, MarketScreen } from "@/src/features/marketExplore";
+import { Coin } from "@/src/models/Coin";
 import {
   createNativeStackNavigator,
   NativeStackNavigationProp,
@@ -19,15 +20,18 @@ export const MarketStack = () => {
       screenOptions={screenOptions}
       initialRouteName={MarketRoutes.MarketScreen}
     >
-      <Stack.Screen name="MarketScreen" component={MarketScreen} />
-      <Stack.Screen name="CoinDetailsScreen" component={CoinDetailsScreen} />
+      <Stack.Screen name={MarketRoutes.MarketScreen} component={MarketScreen} />
+      <Stack.Screen
+        name={MarketRoutes.CoinDetailsScreen}
+        component={CoinDetailsScreen as React.ComponentType<any>}
+      />
     </Stack.Navigator>
   );
 };
 
 export type MarketStackParamList = {
   MarketScreen: undefined;
-  CoinDetailsScreen: undefined;
+  CoinDetailsScreen: { product: Coin };
 };
 
 export type MarketStackPropsType<T extends keyof MarketStackParamList> =

@@ -2,5 +2,19 @@
   "auth": {
     "SET_UP": "Set up",
     "USE_BIOMETRIC_TO_LOGIN": "Use Biometric to log in?"
+  },
+  "market": {
+    "MARKETS": "Markets",
+    "FEATURED": "Featured",
+    "TOP_GAINERS": "Top Gainers",
+    "SEARCH": "Search...",
+    "ALL_COINS": "All Coins",
+    "TOP_LOSERS": "Top Losers",
+    "ONE_HOUR": "1H",
+    "ONE_DAY": "1D",
+    "ONE_WEEK": "1W",
+    "ONE_MONTH": "1M",
+    "ONE_YEAR": "1Y",
+    "ALL": "ALL"
   }
 }
