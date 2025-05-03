@@ -28,7 +28,9 @@ export default function CoinDetailsScreen({
   navigation,
   route,
 }: CoinDetailsScreenProps) {
-  const [coinData, setCoinData] = useState<any | null>(null);
+  const [coinData, setCoinData] = useState<{
+    chartData: any;
+  } | null>(null);
   const [timeframe, setTimeframe] = useState<ActiveTimeframe>(
     ActiveTimeframe.ONE_HOUR
   );
@@ -63,6 +65,8 @@ export default function CoinDetailsScreen({
     });
 
   useEffect(() => {
+    // Basic coin data
+
     if (coinDetails) {
       const chartData = {
         labels: [], // To hide labels and use the chart's built-in formatting
@@ -73,7 +77,9 @@ export default function CoinDetailsScreen({
           },
         ],
       };
-      setCoinData({ ...chartData });
+      setCoinData({
+        chartData,
+      });
     }
   }, [timeframe, coinDetails]);
 
