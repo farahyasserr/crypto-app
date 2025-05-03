@@ -4,19 +4,21 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as SecureStore from "expo-secure-store";
 import React, { useEffect, useState } from "react";
 import { I18nextProvider } from "react-i18next";
+import { Provider } from "react-redux";
 import i18n from "./src/locales/i18n";
 import { AuthStack, MarketStack } from "./src/navigation";
+import { store } from "./src/store";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const checkLoginStatus = async () => {
       const loggedIn = await SecureStore.getItemAsync("loggedIn");
-      setIsLoggedIn(loggedIn === "true");
+      setIsAuthenticated(loggedIn === "true");
       setIsLoading(false);
     };
 
@@ -26,16 +28,18 @@ export default function App() {
   if (isLoading) return null; // Or a splash/loading screen
 
   return (
-    <I18nextProvider i18n={i18n}>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {!isLoggedIn ? (
-            <Stack.Screen name="AuthStack" component={AuthStack} />
-          ) : (
-            <Stack.Screen name="MarketStack" component={MarketStack} />
-          )}
-        </Stack.Navigator>
-      </NavigationContainer>
-    </I18nextProvider>
+    <Provider store={store}>
+      <I18nextProvider i18n={i18n}>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            {isAuthenticated ? (
+              <Stack.Screen name="MarketStack" component={MarketStack} />
+            ) : (
+              <Stack.Screen name="AuthStack" component={AuthStack} />
+            )}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </I18nextProvider>
+    </Provider>
   );
 }
