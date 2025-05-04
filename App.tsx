@@ -5,6 +5,7 @@ import * as SecureStore from "expo-secure-store";
 import React, { useEffect, useState } from "react";
 import { I18nextProvider } from "react-i18next";
 import { Provider } from "react-redux";
+import useLoadFonts from "./src/hooks/useLoadFonts";
 import i18n from "./src/locales/i18n";
 import { AuthStack, MarketStack } from "./src/navigation";
 import { store } from "./src/store";
@@ -14,6 +15,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const fontsLoaded = useLoadFonts();
 
   useEffect(() => {
     const checkLoginStatus = async () => {
@@ -24,6 +26,10 @@ export default function App() {
 
     checkLoginStatus();
   }, []);
+
+  if (!fontsLoaded) {
+    return null; // Or a loading screen
+  }
 
   if (isLoading) return null; // Or a splash/loading screen
 
