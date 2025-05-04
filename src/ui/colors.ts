@@ -9,4 +9,5 @@ export const colors = {
   darkGrey: "#1E1E1E",
   background: "#121212",
   placeholder: "#666666",
+  backgroundDark: "#0E0E0E",
 };
