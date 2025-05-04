@@ -3,9 +3,10 @@ import { MarketStackNavType } from "@/src/navigation";
 import { MarketRoutes } from "@/src/navigation/routeTypes";
 import { useGetCoinOHLCQuery } from "@/src/services/coinApi/coinApi";
 import { colors } from "@/src/ui/colors";
+import { SCREEN_WIDTH } from "@/src/ui/metrics";
 import { RouteProp } from "@react-navigation/native";
 import { t } from "i18next";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   Image,
@@ -14,10 +15,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { LineChart } from "react-native-chart-kit";
+import { LineChart } from "react-native-gifted-charts";
 import { PRODUCT_DETAILS_TIMEFRAMES } from "../../constants";
 import { ActiveTimeframe } from "../../types";
 import { styles } from "./CoinDetailsScreen.styles";
+import { getTimeframeInDays } from "./blocks/utils/coinDetailsUtils";
 
 type CoinDetailsScreenProps = {
   navigation: MarketStackNavType<MarketRoutes.CoinDetailsScreen>;
@@ -29,34 +31,20 @@ export default function CoinDetailsScreen({
   route,
 }: CoinDetailsScreenProps) {
   const [coinData, setCoinData] = useState<{
-    chartData: any;
+    chartData: { value: number }[];
   } | null>(null);
   const [timeframe, setTimeframe] = useState<ActiveTimeframe>(
     ActiveTimeframe.ONE_HOUR
   );
   const { product } = route.params as { product: Coin };
 
-  // Convert timeframe to days for the API
-  const getTimeframeInDays = (
-    timeframe: ActiveTimeframe
-  ): "1" | "7" | "30" | "365" | "max" => {
-    switch (timeframe) {
-      case ActiveTimeframe.ONE_HOUR:
-        return "1"; // 1 day of hourly data
-      case ActiveTimeframe.ONE_DAY:
-        return "1";
-      case ActiveTimeframe.ONE_WEEK:
-        return "7";
-      case ActiveTimeframe.ONE_MONTH:
-        return "30";
-      case ActiveTimeframe.ONE_YEAR:
-        return "365";
-      case ActiveTimeframe.ALL:
-        return "max";
-      default:
-        return "1";
-    }
-  };
+  const yAxisOffset = useMemo(() => {
+    const lowest = coinData?.chartData?.reduce((min, item) => {
+      return Math.min(min, item.value);
+    }, Infinity);
+    const lowestMinus20 = (lowest || 0) - 20;
+    return lowestMinus20 < 0 ? 0 : lowestMinus20; // Return zero if lowest score is less than 0
+  }, [coinData]);
 
   const { data: coinDetails, isLoading: isLoadingCoinDetails } =
     useGetCoinOHLCQuery({
@@ -66,19 +54,12 @@ export default function CoinDetailsScreen({
 
   useEffect(() => {
     // Basic coin data
-
     if (coinDetails) {
-      const chartData = {
-        labels: [], // To hide labels and use the chart's built-in formatting
-        datasets: [
-          {
-            data: coinDetails.map((dataPoint) => dataPoint.usd.close), // Using the close price
-            color: (opacity = 1) => `rgba(134, 255, 0, ${opacity})`,
-          },
-        ],
-      };
       setCoinData({
-        chartData,
+        chartData: coinDetails.map((dataPoint) => ({
+          value: dataPoint.usd.close,
+          date: dataPoint.time,
+        })),
       });
     }
   }, [timeframe, coinDetails]);
@@ -95,14 +76,13 @@ export default function CoinDetailsScreen({
     );
   }
 
+  const onPressBack = () => navigation.goBack();
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.mainContainer}>
         <View style={styles.header}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => navigation.goBack()}
-          >
+          <TouchableOpacity style={styles.backButton} onPress={onPressBack}>
             <Text style={styles.backButtonText}>←</Text>
           </TouchableOpacity>
           <View style={styles.coinInfo}>
@@ -116,6 +96,7 @@ export default function CoinDetailsScreen({
               {product?.name} ({product?.symbol})
             </Text>
           </View>
+          <View style={styles.placeholderView} />
         </View>
 
         <View style={styles.priceContainer}>
@@ -156,35 +137,22 @@ export default function CoinDetailsScreen({
           {coinData?.chartData && (
             <LineChart
               data={coinData.chartData}
-              width={350}
-              height={220}
-              chartConfig={{
-                backgroundColor: "#1E1E1E",
-                backgroundGradientFrom: "#1E1E1E",
-                backgroundGradientTo: "#1E1E1E",
-                decimalPlaces: 0,
-                color: (opacity = 1) => `rgba(134, 255, 0, ${opacity})`,
-                labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                style: {
-                  borderRadius: 16,
-                },
-                propsForDots: {
-                  r: "0",
-                },
-                propsForBackgroundLines: {
-                  stroke: "rgba(255, 255, 255, 0.1)",
-                  strokeWidth: 1,
-                },
-                strokeWidth: 2,
-              }}
-              bezier
-              style={styles.chart}
-              withDots={false}
-              withShadow={false}
-              withVerticalLines={false}
-              withHorizontalLines={true}
-              withVerticalLabels={false}
-              withHorizontalLabels={true}
+              width={SCREEN_WIDTH - 100}
+              height={180}
+              yAxisOffset={yAxisOffset}
+              noOfSections={5}
+              adjustToWidth
+              color1={colors.primary}
+              animateOnDataChange
+              disableScroll
+              hideDataPoints1
+              isAnimated
+              focusEnabled
+              focusedDataPointColor="red"
+              showDataPointOnFocus
+              showStripOnFocus
+              showTextOnFocus
+              showDataPointLabelOnFocus
             />
           )}
         </View>

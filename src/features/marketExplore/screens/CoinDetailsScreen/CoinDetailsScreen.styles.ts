@@ -1,5 +1,9 @@
 import { colors } from "@/src/ui/colors";
-import { HORIZONTAL_SCREEN_PADDING } from "@/src/ui/metrics";
+import {
+  HORIZONTAL_SCREEN_PADDING,
+  scaleHeight,
+  scaleWidth,
+} from "@/src/ui/metrics";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -20,20 +24,25 @@ export const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 10,
-    marginBottom: 30,
+    marginTop: scaleHeight(10),
+    marginBottom: scaleHeight(30),
+    justifyContent: "space-between",
+  },
+  placeholderView: {
+    width: 48,
+    height: 48,
   },
   backButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: "#2A2A2A",
+    width: 48,
+    height: 48,
+    borderRadius: 48 / 2,
+    backgroundColor: colors.grey,
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 15,
+    marginEnd: scaleWidth(15),
   },
   backButtonText: {
-    color: "white",
+    color: colors.white,
     fontSize: 20,
   },
   coinInfo: {
@@ -41,13 +50,13 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   coinLogo: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    marginRight: 10,
+    width: 24,
+    height: 24,
+    borderRadius: 24 / 2,
+    marginEnd: scaleWidth(10),
   },
   coinName: {
-    color: "white",
+    color: colors.white,
     fontSize: 20,
     fontWeight: "600",
   },
@@ -55,7 +64,7 @@ export const styles = StyleSheet.create({
     marginBottom: 30,
   },
   priceText: {
-    color: "white",
+    color: colors.white,
     fontSize: 36,
     fontWeight: "bold",
     marginBottom: 10,
@@ -81,8 +90,8 @@ export const styles = StyleSheet.create({
   timeframeContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 20,
-    paddingHorizontal: 10,
+    marginTop: scaleHeight(20),
+    paddingHorizontal: scaleWidth(10),
     backgroundColor: colors.grey,
     borderRadius: 30,
     padding: 5,
@@ -96,7 +105,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   timeframeText: {
-    color: "white",
+    color: colors.white,
     fontWeight: "500",
   },
   activeTimeframeText: {
