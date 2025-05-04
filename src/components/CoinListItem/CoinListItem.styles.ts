@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     marginRight: 12,
   },
   coinListSymbol: {
-    color: "#FFFFFF",
+    color: colors.white,
     fontWeight: "bold",
     fontSize: 16,
   },
@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
   },
   coinListPrice: {
-    color: "#FFFFFF",
+    color: colors.white,
     fontWeight: "bold",
     fontSize: 16,
   },

@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   coinCard: {
-    backgroundColor: "#1E1E1E",
+    backgroundColor: colors.darkGrey,
     borderRadius: 12,
     padding: 16,
     flex: 0,
@@ -25,8 +25,9 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   coinName: {
-    color: "#999999",
+    color: colors.white,
     fontSize: 12,
+    opacity: 0.5,
   },
   chartContainer: {
     marginVertical: 10,

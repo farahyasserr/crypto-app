@@ -70,8 +70,8 @@ const CoinListItem = ({
           width={SCREEN_WIDTH * 0.5}
           height={scaleHeight(50)}
           chartConfig={{
-            backgroundGradientFrom: "#1E1E1E",
-            backgroundGradientTo: "#1E1E1E",
+            backgroundGradientFrom: colors.darkGrey,
+            backgroundGradientTo: colors.darkGrey,
             decimalPlaces: 2,
             color: () => chartColor,
             labelColor: () => "transparent",
@@ -90,6 +90,7 @@ const CoinListItem = ({
           withOuterLines={false}
           withHorizontalLabels={false}
           withVerticalLabels={false}
+          withShadow={false}
         />
       </View>
     </TouchableOpacity>

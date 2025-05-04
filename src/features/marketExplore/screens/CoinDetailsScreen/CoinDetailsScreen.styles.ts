@@ -1,10 +1,11 @@
+import { colors } from "@/src/ui/colors";
 import { HORIZONTAL_SCREEN_PADDING } from "@/src/ui/metrics";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1E1E1E",
+    backgroundColor: colors.darkGrey,
     padding: 16,
   },
   mainContainer: {
@@ -14,7 +15,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#1E1E1E",
+    backgroundColor: colors.darkGrey,
   },
   header: {
     flexDirection: "row",
@@ -82,7 +83,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginTop: 20,
     paddingHorizontal: 10,
-    backgroundColor: "#2A2A2A",
+    backgroundColor: colors.grey,
     borderRadius: 30,
     padding: 5,
   },
@@ -92,13 +93,13 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
   },
   activeTimeframeButton: {
-    backgroundColor: "#86FF00",
+    backgroundColor: colors.primary,
   },
   timeframeText: {
     color: "white",
     fontWeight: "500",
   },
   activeTimeframeText: {
-    color: "#000000",
+    color: colors.black,
   },
 });

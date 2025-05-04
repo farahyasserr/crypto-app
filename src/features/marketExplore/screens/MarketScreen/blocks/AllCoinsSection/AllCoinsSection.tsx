@@ -2,6 +2,7 @@ import CoinListItem from "@/src/components/CoinListItem/CoinListItem";
 import { Coin } from "@/src/models/Coin";
 import { MarketStackNavType } from "@/src/navigation";
 import { MarketRoutes } from "@/src/navigation/routeTypes";
+import { colors } from "@/src/ui/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { t } from "i18next";
 import { FlatList, Text, TextInput, View } from "react-native";
@@ -36,14 +37,14 @@ const AllCoinsSection = ({
           <TextInput
             style={styles.searchInput}
             placeholder={t("market.SEARCH")}
-            placeholderTextColor="#666"
+            placeholderTextColor={colors.placeholder}
             onChangeText={onChangeSearchQuery}
             value={searchQuery}
           />
           <Ionicons
             name="search"
             size={20}
-            color="#666"
+            color={colors.placeholder}
             style={styles.searchIcon}
           />
         </View>

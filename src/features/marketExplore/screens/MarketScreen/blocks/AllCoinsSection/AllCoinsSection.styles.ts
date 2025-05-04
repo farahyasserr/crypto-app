@@ -1,3 +1,5 @@
+import { colors } from "@/src/ui/colors";
+import { scaleHeight, scaleWidth } from "@/src/ui/metrics";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -8,29 +10,30 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 15,
+    marginBottom: scaleHeight(15),
   },
   allCoinsTitle: {
-    color: "#FFFFFF",
+    color: colors.white,
     fontSize: 18,
     fontWeight: "bold",
   },
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#2A2A2A",
-    borderRadius: 20,
-    paddingHorizontal: 10,
+    backgroundColor: colors.grey,
+    borderRadius: 100,
+    paddingHorizontal: scaleWidth(10),
     flex: 1,
-    marginLeft: 10,
+    marginStart: scaleWidth(10),
   },
   searchInput: {
-    color: "#FFFFFF",
+    color: colors.white,
     flex: 1,
-    height: 40,
-    paddingLeft: 5,
+    height: "auto",
+    minHeight: scaleHeight(40),
+    paddingStart: scaleWidth(5),
   },
   searchIcon: {
-    marginLeft: 5,
+    marginStart: scaleWidth(5),
   },
 });

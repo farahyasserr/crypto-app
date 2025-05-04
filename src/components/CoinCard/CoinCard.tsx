@@ -53,8 +53,8 @@ const CoinCard = ({
           width={SCREEN_WIDTH * 0.42}
           height={70}
           chartConfig={{
-            backgroundGradientFrom: "#1E1E1E",
-            backgroundGradientTo: "#1E1E1E",
+            backgroundGradientFrom: colors.darkGrey,
+            backgroundGradientTo: colors.darkGrey,
             decimalPlaces: 2,
             color: () => chartColor,
             labelColor: () => "transparent",
@@ -73,6 +73,7 @@ const CoinCard = ({
           withOuterLines={false}
           withHorizontalLabels={false}
           withVerticalLabels={false}
+          withShadow={false}
         />
       </View>
 
