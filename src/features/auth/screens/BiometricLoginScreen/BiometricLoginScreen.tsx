@@ -2,7 +2,7 @@ import { Button } from "@/src/components";
 import { AuthStackNavType } from "@/src/navigation";
 import { AuthRoutes } from "@/src/navigation/routeTypes";
 import { useTranslation } from "react-i18next";
-import { Text, View } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
 import { styles } from "./BiometricLoginScreen.styles";
 
 interface BiometricLoginScreenProps {
@@ -19,9 +19,14 @@ export default function BiometricLoginScreen({
   };
 
   return (
-    <View style={styles.mainContainer}>
-      <Text>{t("auth.USE_BIOMETRIC_TO_LOGIN")}</Text>
-      <Button title={t("auth.SET_UP")} onPress={onPressSetup} />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.mainContainer}>
+        <Text style={styles.title}>{t("auth.USE_BIOMETRIC_TO_LOGIN")}</Text>
+
+        <View style={styles.fingerprintContainer}></View>
+
+        <Button title={t("auth.SET_UP")} onPress={onPressSetup} />
+      </View>
+    </SafeAreaView>
   );
 }
