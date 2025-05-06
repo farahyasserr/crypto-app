@@ -1,3 +1,4 @@
+import { ScreenWrapper } from "@/src/components";
 import { MarketRoutes } from "@/src/navigation/routeTypes";
 import { MarketStackNavType } from "@/src/navigation/stacks";
 import { useGetAllCoinsQuery } from "@/src/services/coinApi/coinApi";
@@ -34,21 +35,23 @@ export default function MarketScreen({
   );
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.mainContainer}>
-        <Text style={styles.header}>{t("market.MARKETS")}</Text>
-        <MarketTabsSection
-          coins={coins}
-          isLoading={isLoading}
-          navigation={navigation}
-        />
-        <AllCoinsSection
-          coins={filteredCoins}
-          navigation={navigation}
-          setSearchQuery={setSearchQuery}
-          searchQuery={searchQuery}
-        />
-      </View>
-    </TouchableWithoutFeedback>
+    <ScreenWrapper>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.mainContainer}>
+          <Text style={styles.header}>{t("market.MARKETS")}</Text>
+          <MarketTabsSection
+            coins={coins}
+            isLoading={isLoading}
+            navigation={navigation}
+          />
+          <AllCoinsSection
+            coins={filteredCoins}
+            navigation={navigation}
+            setSearchQuery={setSearchQuery}
+            searchQuery={searchQuery}
+          />
+        </View>
+      </TouchableWithoutFeedback>
+    </ScreenWrapper>
   );
 }
