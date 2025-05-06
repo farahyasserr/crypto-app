@@ -1,4 +1,5 @@
 import { colors } from "@/src/ui/colors";
+import { scaleHeight } from "@/src/ui/metrics";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -6,7 +7,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     padding: 12,
-    backgroundColor: "#1E1E1E",
+    backgroundColor: colors.grey2,
     borderRadius: 12,
     marginBottom: 10,
   },
@@ -30,22 +31,22 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   coinListName: {
-    color: "#999999",
+    color: colors.placeholder,
     fontSize: 12,
   },
   coinListItemRight: {
     alignItems: "flex-end",
   },
   priceChangeContainer: {
-    marginBottom: 5,
+    marginBottom: scaleHeight(5),
   },
   priceChangeBadge: {
     paddingHorizontal: 8,
     paddingVertical: 4,
-    borderRadius: 12,
+    borderRadius: 6,
     fontSize: 12,
     fontWeight: "bold",
-    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    backgroundColor: colors.lightGrey,
   },
   miniChart: {
     marginVertical: 5,

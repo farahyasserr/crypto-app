@@ -1,10 +1,7 @@
 import { colors } from "@/src/ui/colors";
 import { HORIZONTAL_SCREEN_PADDING, scaleHeight } from "@/src/ui/metrics";
 import { typographyStyles } from "@/src/ui/typographyStyles";
-import { Dimensions, StyleSheet } from "react-native";
-
-const { width } = Dimensions.get("window");
-const CIRCLE_SIZE = width * 0.6;
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
@@ -25,10 +22,15 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   fingerprintContainer: {
-    width: CIRCLE_SIZE,
-    height: CIRCLE_SIZE,
     justifyContent: "center",
     alignItems: "center",
-    position: "relative",
+    height: "60%",
+  },
+  buttonContainer: {
+    width: "100%",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingBottom: scaleHeight(60),
   },
 });

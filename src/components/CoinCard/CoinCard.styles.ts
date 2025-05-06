@@ -4,11 +4,13 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   coinCard: {
-    backgroundColor: colors.darkGrey,
+    backgroundColor: colors.grey2,
     borderRadius: 12,
     padding: 16,
     flex: 0,
     width: scaleWidth(180),
+    borderWidth: 1,
+    borderColor: colors.lightGrey,
   },
   coinInfo: {
     flexDirection: "row",
@@ -47,8 +49,11 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   priceChange: {
-    fontSize: 14,
+    fontSize: 10,
     fontWeight: "bold",
+    padding: 4,
+    borderRadius: 6,
+    backgroundColor: colors.lightGrey,
   },
   priceUp: {
     color: colors.primary,

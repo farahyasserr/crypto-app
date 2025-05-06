@@ -70,8 +70,8 @@ const CoinListItem = ({
           width={SCREEN_WIDTH * 0.5}
           height={scaleHeight(50)}
           chartConfig={{
-            backgroundGradientFrom: colors.darkGrey,
-            backgroundGradientTo: colors.darkGrey,
+            backgroundGradientFrom: colors.grey2,
+            backgroundGradientTo: colors.grey2,
             decimalPlaces: 2,
             color: () => chartColor,
             labelColor: () => "transparent",

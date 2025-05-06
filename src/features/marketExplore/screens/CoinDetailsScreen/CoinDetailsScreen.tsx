@@ -105,17 +105,7 @@ export default function CoinDetailsScreen({
             $ {product?.currentPrice.toLocaleString()}
           </Text>
           {product?.priceChangePercentage24h && (
-            <View
-              style={[
-                styles.changeContainer,
-                {
-                  backgroundColor:
-                    product?.priceChangePercentage24h >= 0
-                      ? "rgba(134, 255, 0, 0.2)"
-                      : "rgba(255, 59, 59, 0.2)",
-                },
-              ]}
-            >
+            <View style={styles.changeContainer}>
               <Text
                 style={[
                   styles.changeText,
@@ -128,7 +118,7 @@ export default function CoinDetailsScreen({
                 ]}
               >
                 {product?.priceChangePercentage24h >= 0 ? "+ " : "- "}
-                {Math.abs(product?.priceChangePercentage24h).toFixed(2)}%
+                {Math.abs(product?.priceChangePercentage24h).toFixed(2)} %
               </Text>
             </View>
           )}

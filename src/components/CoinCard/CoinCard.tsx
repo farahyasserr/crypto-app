@@ -53,8 +53,8 @@ const CoinCard = ({
           width={SCREEN_WIDTH * 0.42}
           height={70}
           chartConfig={{
-            backgroundGradientFrom: colors.darkGrey,
-            backgroundGradientTo: colors.darkGrey,
+            backgroundGradientFrom: colors.grey2,
+            backgroundGradientTo: colors.grey2,
             decimalPlaces: 2,
             color: () => chartColor,
             labelColor: () => "transparent",
