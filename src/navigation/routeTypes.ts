@@ -8,3 +8,9 @@ export const enum MarketRoutes {
   MarketScreen = "MarketScreen",
   CoinDetailsScreen = "CoinDetailsScreen",
 }
+
+// Root Routes
+export const enum RootRoutes {
+  MarketStack = "MarketStack",
+  AuthStack = "AuthStack",
+}
