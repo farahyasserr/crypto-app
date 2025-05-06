@@ -6,7 +6,7 @@ import { MarketRoutes } from "@/src/navigation/routeTypes";
 import { MarketStackNavType } from "@/src/navigation/stacks";
 import { colors } from "@/src/ui/colors";
 import { useMemo, useState } from "react";
-import { ActivityIndicator, FlatList, View } from "react-native";
+import { ActivityIndicator, FlatList, ScrollView, View } from "react-native";
 import { styles } from "./MarketTabsSection.styles";
 
 const MarketTabsSection = ({
@@ -88,14 +88,16 @@ const MarketTabsSection = ({
   return (
     <View>
       <View style={styles.tabContainer}>
-        {MARKET_SCREEN_TABS.map((tab: TabConfig) => (
-          <Tab<ActiveTab>
-            key={tab.key}
-            tab={tab}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
-        ))}
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {MARKET_SCREEN_TABS.map((tab: TabConfig) => (
+            <Tab<ActiveTab>
+              key={tab.key}
+              tab={tab}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+            />
+          ))}
+        </ScrollView>
       </View>
 
       {renderContent()}
