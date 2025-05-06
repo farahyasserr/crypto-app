@@ -3,7 +3,7 @@ import { MarketRoutes } from "@/src/navigation/routeTypes";
 import { useGetAllCoinsQuery } from "@/src/services/coinApi/coinApi";
 import { t } from "i18next";
 import React, { useMemo, useState } from "react";
-import { Text, View } from "react-native";
+import { Keyboard, Text, TouchableWithoutFeedback, View } from "react-native";
 import { styles } from "./MarketScreen.styles";
 import { MarketTabsSection } from "./blocks";
 import AllCoinsSection from "./blocks/AllCoinsSection/AllCoinsSection";
@@ -34,19 +34,21 @@ export default function MarketScreen({
   );
 
   return (
-    <View style={styles.mainContainer}>
-      <Text style={styles.header}>{t("market.MARKETS")}</Text>
-      <MarketTabsSection
-        coins={coins}
-        isLoading={isLoading}
-        navigation={navigation}
-      />
-      <AllCoinsSection
-        coins={filteredCoins}
-        navigation={navigation}
-        setSearchQuery={setSearchQuery}
-        searchQuery={searchQuery}
-      />
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.mainContainer}>
+        <Text style={styles.header}>{t("market.MARKETS")}</Text>
+        <MarketTabsSection
+          coins={coins}
+          isLoading={isLoading}
+          navigation={navigation}
+        />
+        <AllCoinsSection
+          coins={filteredCoins}
+          navigation={navigation}
+          setSearchQuery={setSearchQuery}
+          searchQuery={searchQuery}
+        />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }

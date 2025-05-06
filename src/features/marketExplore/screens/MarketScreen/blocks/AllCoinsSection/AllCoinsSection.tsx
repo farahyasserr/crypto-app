@@ -1,11 +1,10 @@
+import { SearchBar } from "@/src/components";
 import CoinListItem from "@/src/components/CoinListItem/CoinListItem";
 import { Coin } from "@/src/models/Coin";
 import { MarketStackNavType } from "@/src/navigation";
 import { MarketRoutes } from "@/src/navigation/routeTypes";
-import { colors } from "@/src/ui/colors";
-import { Ionicons } from "@expo/vector-icons";
 import { t } from "i18next";
-import { FlatList, Text, TextInput, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import { styles } from "./AllCoinsSection.styles";
 
 const AllCoinsSection = ({
@@ -33,23 +32,14 @@ const AllCoinsSection = ({
     <View style={styles.allCoinsContainer}>
       <View style={styles.allCoinsHeader}>
         <Text style={styles.allCoinsTitle}>{t("market.ALL_COINS")}</Text>
-        <View style={styles.searchContainer}>
-          <TextInput
-            style={styles.searchInput}
-            placeholder={t("market.SEARCH")}
-            placeholderTextColor={colors.placeholder}
-            onChangeText={onChangeSearchQuery}
-            value={searchQuery}
-          />
-          <Ionicons
-            name="search"
-            size={20}
-            color={colors.placeholder}
-            style={styles.searchIcon}
-          />
-        </View>
+        <SearchBar
+          onChangeSearchQuery={onChangeSearchQuery}
+          searchQuery={searchQuery}
+          animated={true}
+          initialFlex={0.5}
+          finalFlex={1}
+        />
       </View>
-
       <FlatList
         data={coins}
         keyExtractor={(item) => item.id}
