@@ -1,8 +1,8 @@
 import { SearchBar } from "@/src/components";
 import CoinListItem from "@/src/components/CoinListItem/CoinListItem";
 import { Coin } from "@/src/models/Coin";
-import { MarketStackNavType } from "@/src/navigation";
 import { MarketRoutes } from "@/src/navigation/routeTypes";
+import { MarketStackNavType } from "@/src/navigation/stacks";
 import { t } from "i18next";
 import { FlatList, Text, View } from "react-native";
 import { styles } from "./AllCoinsSection.styles";

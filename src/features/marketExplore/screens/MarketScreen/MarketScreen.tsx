@@ -1,5 +1,5 @@
-import { MarketStackNavType } from "@/src/navigation";
 import { MarketRoutes } from "@/src/navigation/routeTypes";
+import { MarketStackNavType } from "@/src/navigation/stacks";
 import { useGetAllCoinsQuery } from "@/src/services/coinApi/coinApi";
 import { t } from "i18next";
 import React, { useMemo, useState } from "react";

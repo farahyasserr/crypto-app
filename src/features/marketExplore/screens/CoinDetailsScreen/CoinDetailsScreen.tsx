@@ -1,6 +1,6 @@
 import { Coin } from "@/src/models/Coin";
-import { MarketStackNavType } from "@/src/navigation";
 import { MarketRoutes } from "@/src/navigation/routeTypes";
+import { MarketStackNavType } from "@/src/navigation/stacks";
 import { useGetCoinOHLCQuery } from "@/src/services/coinApi/coinApi";
 import { colors } from "@/src/ui/colors";
 import { SCREEN_WIDTH } from "@/src/ui/metrics";
