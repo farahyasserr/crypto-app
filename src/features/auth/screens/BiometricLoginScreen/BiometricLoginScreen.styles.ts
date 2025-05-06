@@ -1,5 +1,9 @@
 import { colors } from "@/src/ui/colors";
-import { HORIZONTAL_SCREEN_PADDING, scaleHeight } from "@/src/ui/metrics";
+import {
+  HORIZONTAL_SCREEN_PADDING,
+  scaleHeight,
+  SCREEN_WIDTH,
+} from "@/src/ui/metrics";
 import { typographyStyles } from "@/src/ui/typographyStyles";
 import { StyleSheet } from "react-native";
 
@@ -24,5 +28,9 @@ export const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
+  },
+  biometryImage: {
+    width: SCREEN_WIDTH,
+    height: scaleHeight(500),
   },
 });
