@@ -12,4 +12,5 @@ export const colors = {
   placeholder: "#666666",
   backgroundDark: "#0E0E0E",
   grey2: "#171616",
+  success: "#00FF00",
 };
