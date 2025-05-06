@@ -7,7 +7,6 @@
     "MARKETS": "Markets",
     "FEATURED": "Featured",
     "TOP_GAINERS": "Top Gainers",
-    "SEARCH": "Search...",
     "ALL_COINS": "All Coins",
     "TOP_LOSERS": "Top Losers",
     "ONE_HOUR": "1H",
@@ -16,5 +15,8 @@
     "ONE_MONTH": "1M",
     "ONE_YEAR": "1Y",
     "ALL": "ALL"
+  },
+  "common": {
+    "SEARCH": "Search..."
   }
 }

@@ -48,7 +48,7 @@ const SearchBar = ({
     >
       <TextInput
         style={styles.searchInput}
-        placeholder={t("market.SEARCH")}
+        placeholder={t("common.SEARCH")}
         placeholderTextColor={colors.placeholder}
         onChangeText={onChangeSearchQuery}
         value={searchQuery}
