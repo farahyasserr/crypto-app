@@ -1,4 +1,4 @@
-import { colors } from "@/src/ui/colors";
+import { scaleWidth } from "@/src/ui/metrics";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -7,21 +7,6 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     borderBottomWidth: 1,
     borderBottomColor: "#333",
-  },
-  tab: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: 10,
-    marginRight: 20,
-  },
-  activeTab: {
-    borderBottomWidth: 2,
-    borderBottomColor: "#FFD700",
-  },
-  tabText: {
-    color: colors.white,
-    marginLeft: 5,
-    fontSize: 16,
   },
   loader: {
     marginTop: 50,
@@ -33,5 +18,8 @@ export const styles = StyleSheet.create({
   },
   scrollViewContent: {
     flexDirection: "row",
+  },
+  itemSeparator: {
+    width: scaleWidth(10),
   },
 });

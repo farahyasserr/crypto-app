@@ -1,21 +1,12 @@
-import { CoinCard } from "@/src/components";
+import { CoinCard, Tab } from "@/src/components";
 import { MARKET_SCREEN_TABS } from "@/src/features/marketExplore/constants";
 import { ActiveTab, TabConfig } from "@/src/features/marketExplore/types";
 import { Coin } from "@/src/models/Coin";
 import { MarketStackNavType } from "@/src/navigation";
 import { MarketRoutes } from "@/src/navigation/routeTypes";
 import { colors } from "@/src/ui/colors";
-import { scaleWidth } from "@/src/ui/metrics";
-import { Ionicons } from "@expo/vector-icons";
-import { t } from "i18next";
 import { useMemo, useState } from "react";
-import {
-  ActivityIndicator,
-  FlatList,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ActivityIndicator, FlatList, View } from "react-native";
 import { styles } from "./MarketTabsSection.styles";
 
 const MarketTabsSection = ({
@@ -87,9 +78,7 @@ const MarketTabsSection = ({
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.scrollViewContent}
-            ItemSeparatorComponent={() => (
-              <View style={{ width: scaleWidth(10) }} />
-            )}
+            ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
           />
         </View>
       );
@@ -100,14 +89,12 @@ const MarketTabsSection = ({
     <View>
       <View style={styles.tabContainer}>
         {MARKET_SCREEN_TABS.map((tab: TabConfig) => (
-          <TouchableOpacity
+          <Tab<ActiveTab>
             key={tab.key}
-            style={[styles.tab, activeTab === tab.key && styles.activeTab]}
-            onPress={() => setActiveTab(tab.key)}
-          >
-            <Ionicons name={tab.icon} size={18} color={tab.iconColor} />
-            <Text style={styles.tabText}>{t(tab.labelKey)}</Text>
-          </TouchableOpacity>
+            tab={tab}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
         ))}
       </View>
 
