@@ -33,4 +33,15 @@ export const styles = StyleSheet.create({
     width: SCREEN_WIDTH,
     height: scaleHeight(500),
   },
+  successText: {
+    color: colors.success,
+    marginTop: scaleHeight(15),
+    fontSize: 16,
+  },
+  noBiometricAvailableText: {
+    color: colors.primary,
+    marginTop: scaleHeight(15),
+    textAlign: "center",
+    ...typographyStyles.body,
+  },
 });

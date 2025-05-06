@@ -1,5 +1,6 @@
 import { colors } from "@/src/ui/colors";
 import { scaleHeight, scaleWidth } from "@/src/ui/metrics";
+import { typographyStyles } from "@/src/ui/typographyStyles";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -17,6 +18,8 @@ export const styles = StyleSheet.create({
     height: "auto",
     minHeight: scaleHeight(40),
     paddingStart: scaleWidth(5),
+    paddingVertical: scaleHeight(8),
+    ...typographyStyles.body,
   },
   icon: {
     marginStart: scaleWidth(5),

@@ -1,4 +1,6 @@
 import { colors } from "@/src/ui/colors";
+import { scaleWidth } from "@/src/ui/metrics";
+import { typographyStyles } from "@/src/ui/typographyStyles";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -14,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   tabText: {
     color: colors.white,
-    marginLeft: 5,
-    fontSize: 16,
+    marginStart: scaleWidth(5),
+    ...typographyStyles.body,
   },
 });
