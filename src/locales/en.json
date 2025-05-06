@@ -1,7 +1,13 @@
 {
   "auth": {
     "SET_UP": "Set up",
-    "USE_BIOMETRIC_TO_LOGIN": "Use Biometric \n to log in?"
+    "USE_BIOMETRIC_TO_LOGIN": "Use Biometric \n to log in?",
+    "BIOMETRIC_NOT_AVAILABLE_MESSAGE": "Biometric is not available on this device. Please try again with a different method.",
+    "BIOMETRIC_SETUP_FAILED_TITLE": "Biometric setup failed",
+    "BIOMETRIC_SETUP_FAILED_MESSAGE": "Biometric setup failed. Please try again.",
+    "FACEID_SETUP_PROMPT": "Set up Face ID",
+    "BIOMETRIC_SETUP_SUCCESS_TITLE": "Biometric setup complete",
+    "BIOMETRIC_SETUP_SUCCESS_MESSAGE": "Biometric setup complete. You can now use your biometric data to log in."
   },
   "market": {
     "MARKETS": "Markets",
@@ -17,6 +23,7 @@
     "ALL": "ALL"
   },
   "common": {
-    "SEARCH": "Search..."
+    "SEARCH": "Search...",
+    "OK": "OK"
   }
 }
