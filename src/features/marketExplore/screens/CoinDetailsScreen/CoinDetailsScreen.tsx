@@ -1,3 +1,4 @@
+import { images } from "@/assets/images";
 import { Coin } from "@/src/models/Coin";
 import { MarketRoutes } from "@/src/navigation/routeTypes";
 import { MarketStackNavType } from "@/src/navigation/stacks";
@@ -139,13 +140,16 @@ export default function CoinDetailsScreen({
               hideDataPoints1
               isAnimated
               focusEnabled
-              focusedDataPointColor="red"
               showDataPointOnFocus
               showStripOnFocus
               showTextOnFocus
               showDataPointLabelOnFocus
             />
           )}
+        </View>
+
+        <View style={styles.blueHaloContainer}>
+          <Image source={images.blueHaloImage} />
         </View>
 
         <View style={styles.timeframeContainer}>

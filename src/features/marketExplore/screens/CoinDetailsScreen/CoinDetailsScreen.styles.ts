@@ -112,4 +112,7 @@ export const styles = StyleSheet.create({
   activeTimeframeText: {
     color: colors.black,
   },
+  blueHaloContainer: {
+    position: "absolute",
+  },
 });
