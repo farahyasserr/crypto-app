@@ -4,6 +4,7 @@ import { MarketRoutes } from "@/src/navigation/routeTypes";
 import { useGetCoinOHLCQuery } from "@/src/services/coinApi/coinApi";
 import { colors } from "@/src/ui/colors";
 import { SCREEN_WIDTH } from "@/src/ui/metrics";
+import { Ionicons } from "@expo/vector-icons";
 import { RouteProp } from "@react-navigation/native";
 import { t } from "i18next";
 import React, { useEffect, useMemo, useState } from "react";
@@ -83,7 +84,7 @@ export default function CoinDetailsScreen({
       <View style={styles.mainContainer}>
         <View style={styles.header}>
           <TouchableOpacity style={styles.backButton} onPress={onPressBack}>
-            <Text style={styles.backButtonText}>←</Text>
+            <Ionicons name="arrow-back" size={22} color={colors.white} />
           </TouchableOpacity>
           <View style={styles.coinInfo}>
             <Image
