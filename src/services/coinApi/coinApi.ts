@@ -1,14 +1,11 @@
 import apiEndpoints from "../api";
-import { apiSlice } from "../apiSlice";
+import { apiSlice, Tags } from "../apiSlice";
 import {
   GetAllCoinsRequest,
   GetAllCoinsResponse,
   GetCoinOHLCRequest,
   GetCoinOHLCResponse,
 } from "./coinApiTypes";
-
-// TODO: Consider having params instead of passing them in the url
-// TODO: Check if i need to separate the apis to diff api files
 
 export const coinApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -35,7 +32,7 @@ export const coinApi = apiSlice.injectEndpoints({
       forceRefetch({ currentArg, previousArg }) {
         return currentArg?.page !== previousArg?.page;
       },
-      providesTags: ["Coins"],
+      providesTags: [Tags.COINS],
     }),
 
     // Get OHLC data for a specific coin
@@ -44,7 +41,7 @@ export const coinApi = apiSlice.injectEndpoints({
         url: apiEndpoints.getCoinOhlc(productId, days),
       }),
       providesTags: (result, error, arg) => [
-        { type: "CoinData", id: arg.productId },
+        { type: Tags.COIN_DATA, id: arg.productId },
       ],
     }),
   }),

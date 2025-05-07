@@ -1,4 +1,4 @@
-// TODO: Create BASE_URL and use it in the api endpoints
+export const BASE_URL = "https://coingeko.burjx.com/"; // TODO: ideally should be in .env
 
 const apiEndpoints = {
   getAllCoins: (currency: string, page: number, pageSize: number) =>
