@@ -17,6 +17,24 @@ export const coinApi = apiSlice.injectEndpoints({
       query: ({ page, pageSize }) => ({
         url: apiEndpoints.getAllCoins("usd", page, pageSize),
       }),
+      serializeQueryArgs: ({ endpointName }) => {
+        return endpointName;
+      },
+      // Merge incoming data with existing data
+      merge: (currentCache, newItems) => {
+        if (newItems.page === 1) {
+          return newItems;
+        }
+
+        return {
+          ...newItems,
+          data: [...currentCache.data, ...newItems.data],
+        };
+      },
+      // Only trigger cache update if the page is different
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg?.page !== previousArg?.page;
+      },
       providesTags: ["Coins"],
     }),
 

@@ -18,4 +18,9 @@ export const styles = StyleSheet.create({
     color: colors.white,
     ...typographyStyles.body,
   },
+  loaderContainer: {
+    paddingVertical: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });

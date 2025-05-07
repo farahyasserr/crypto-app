@@ -3,8 +3,9 @@ import CoinListItem from "@/src/components/CoinListItem/CoinListItem";
 import { Coin } from "@/src/models/Coin";
 import { MarketRoutes } from "@/src/navigation/routeTypes";
 import { MarketStackNavType } from "@/src/navigation/stacks";
+import { colors } from "@/src/ui/colors";
 import { t } from "i18next";
-import { FlatList, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import { styles } from "./AllCoinsSection.styles";
 
 const AllCoinsSection = ({
@@ -12,11 +13,15 @@ const AllCoinsSection = ({
   navigation,
   setSearchQuery,
   searchQuery,
+  onEndReached,
+  isLoadingMore,
 }: {
   coins: Coin[];
   navigation: MarketStackNavType<MarketRoutes.MarketScreen>;
   setSearchQuery: (text: string) => void;
   searchQuery: string;
+  onEndReached?: () => void;
+  isLoadingMore?: boolean;
 }) => {
   const onPressCoinListItem = (item: Coin) => {
     navigation.navigate(MarketRoutes.CoinDetailsScreen, {
@@ -26,6 +31,16 @@ const AllCoinsSection = ({
 
   const onChangeSearchQuery = (text: string) => {
     setSearchQuery(text);
+  };
+
+  const renderFooter = () => {
+    if (!isLoadingMore) return null;
+
+    return (
+      <View style={styles.loaderContainer}>
+        <ActivityIndicator size="small" color={colors.primary} />
+      </View>
+    );
   };
 
   return (
@@ -47,6 +62,9 @@ const AllCoinsSection = ({
           <CoinListItem coin={item} onPressCoinListItem={onPressCoinListItem} />
         )}
         showsVerticalScrollIndicator={false}
+        onEndReached={onEndReached}
+        onEndReachedThreshold={0.5}
+        ListFooterComponent={renderFooter}
       />
     </View>
   );
