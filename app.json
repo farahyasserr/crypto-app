@@ -10,7 +10,10 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.farah.dawoud.cryptoapp"
+      "bundleIdentifier": "com.farah.dawoud.cryptoapp",
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "We use Face ID to authenticate you securely."
+      }
     },
     "android": {
       "adaptiveIcon": {
