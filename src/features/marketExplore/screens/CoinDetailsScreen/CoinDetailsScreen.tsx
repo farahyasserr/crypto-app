@@ -134,7 +134,11 @@ export default function CoinDetailsScreen({
               yAxisOffset={yAxisOffset}
               noOfSections={5}
               adjustToWidth
-              color1={colors.primary}
+              color1={
+                product?.priceChangePercentage24h >= 0
+                  ? colors.primary
+                  : colors.red
+              }
               animateOnDataChange
               disableScroll
               hideDataPoints1
