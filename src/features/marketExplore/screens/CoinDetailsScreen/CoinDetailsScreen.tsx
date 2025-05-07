@@ -4,7 +4,7 @@ import { MarketRoutes } from "@/src/navigation/routeTypes";
 import { MarketStackNavType } from "@/src/navigation/stacks";
 import { useGetCoinOHLCQuery } from "@/src/services/coinApi/coinApi";
 import { colors } from "@/src/ui/colors";
-import { SCREEN_WIDTH } from "@/src/ui/metrics";
+import { scaleHeight, scaleWidth, SCREEN_WIDTH } from "@/src/ui/metrics";
 import { Ionicons } from "@expo/vector-icons";
 import { RouteProp } from "@react-navigation/native";
 import { t } from "i18next";
@@ -129,10 +129,12 @@ export default function CoinDetailsScreen({
           {coinData?.chartData && (
             <LineChart
               data={coinData.chartData}
-              width={SCREEN_WIDTH - 100}
-              height={180}
+              width={SCREEN_WIDTH - scaleWidth(100)}
+              height={scaleHeight(180)}
               yAxisOffset={yAxisOffset}
               noOfSections={5}
+              rulesColor={colors.grey}
+              rulesType="solid"
               adjustToWidth
               color1={
                 product?.priceChangePercentage24h >= 0
@@ -148,12 +150,25 @@ export default function CoinDetailsScreen({
               showStripOnFocus
               showTextOnFocus
               showDataPointLabelOnFocus
+              yAxisTextStyle={styles.yAxisTextStyle}
+              formatYLabel={(value) => {
+                const num = parseInt(value);
+                if (num >= 1000) {
+                  return `$${(num / 1000).toFixed(1)}k`;
+                }
+                return `$${num}`;
+              }}
+              yAxisLabelContainerStyle={{ marginRight: scaleWidth(8) }}
             />
           )}
         </View>
 
         <View style={styles.blueHaloContainer}>
-          <Image source={images.blueHaloImage} />
+          <Image
+            source={images.blueHaloImage}
+            style={styles.blueHaloImage}
+            resizeMode="contain"
+          />
         </View>
 
         <View style={styles.timeframeContainer}>

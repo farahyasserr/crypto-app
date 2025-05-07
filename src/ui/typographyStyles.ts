@@ -13,4 +13,10 @@ export const typographyStyles: Record<string, TextStyle> = {
     fontSize: 20,
     fontFamily: "LufgaRegular",
   },
+  bodySmall: {
+    fontWeight: "400",
+    lineHeight: 20,
+    fontSize: 16,
+    fontFamily: "LufgaRegular",
+  },
 };

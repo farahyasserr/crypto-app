@@ -3,7 +3,10 @@ import {
   HORIZONTAL_SCREEN_PADDING,
   scaleHeight,
   scaleWidth,
+  SCREEN_HEIGHT,
+  SCREEN_WIDTH,
 } from "@/src/ui/metrics";
+import { typographyStyles } from "@/src/ui/typographyStyles";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -40,10 +43,10 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginEnd: scaleWidth(15),
+    zIndex: 1,
   },
   backButtonText: {
     color: colors.white,
-    fontSize: 20,
   },
   coinInfo: {
     flexDirection: "row",
@@ -57,35 +60,32 @@ export const styles = StyleSheet.create({
   },
   coinName: {
     color: colors.white,
-    fontSize: 20,
-    fontWeight: "600",
+    ...typographyStyles.body,
   },
   priceContainer: {
-    marginBottom: 30,
+    marginBottom: scaleHeight(30),
   },
   priceText: {
     color: colors.white,
-    fontSize: 36,
-    fontWeight: "bold",
-    marginBottom: 10,
+    marginBottom: scaleHeight(10),
+    ...typographyStyles.title,
   },
   changeContainer: {
     alignSelf: "flex-start",
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    paddingHorizontal: scaleWidth(12),
+    paddingVertical: scaleHeight(6),
     borderRadius: 20,
     backgroundColor: colors.lightGrey,
   },
   changeText: {
-    fontSize: 16,
-    fontWeight: "600",
+    ...typographyStyles.bodySmall,
   },
   chartContainer: {
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: scaleHeight(20),
   },
   chart: {
-    marginVertical: 8,
+    marginVertical: scaleHeight(8),
     borderRadius: 16,
   },
   timeframeContainer: {
@@ -98,8 +98,8 @@ export const styles = StyleSheet.create({
     padding: 5,
   },
   timeframeButton: {
-    paddingVertical: 8,
-    paddingHorizontal: 15,
+    paddingVertical: scaleHeight(8),
+    paddingHorizontal: scaleWidth(15),
     borderRadius: 20,
   },
   activeTimeframeButton: {
@@ -107,12 +107,20 @@ export const styles = StyleSheet.create({
   },
   timeframeText: {
     color: colors.white,
-    fontWeight: "500",
+    ...typographyStyles.bodySmall,
   },
   activeTimeframeText: {
     color: colors.black,
   },
   blueHaloContainer: {
     position: "absolute",
+  },
+  blueHaloImage: {
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT - scaleHeight(200),
+  },
+  yAxisTextStyle: {
+    color: colors.placeholder,
+    fontSize: 12,
   },
 });
